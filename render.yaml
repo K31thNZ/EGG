@@ -5,4 +5,3 @@ services:
     region: frankfurt
     plan: free
     healthCheckPath: /
-    dockerCommand: /entrypoint.sh
