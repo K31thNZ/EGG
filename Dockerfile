@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Download udp2raw tunnel
 RUN wget -q https://github.com/wangyu-/udp2raw-tunnel/releases/download/20230206.0/udp2raw_binaries.tar.gz \
     && tar xzf udp2raw_binaries.tar.gz \
     && mv udp2raw_x86 /usr/local/bin/udp2raw \
@@ -22,11 +21,11 @@ RUN wget -q https://github.com/wangyu-/udp2raw-tunnel/releases/download/20230206
 
 RUN mkdir -p /etc/wireguard
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 COPY wg0.conf /etc/wireguard/wg0.conf
 
 EXPOSE 51820
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/start.sh"]
