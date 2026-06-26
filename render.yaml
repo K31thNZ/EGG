@@ -1,11 +1,8 @@
 services:
   - type: web
-    name: wireguard-vpn
+    name: egg-vpn
     env: docker
-    region: oregon  # US IP - Change to frankfurt for EU IP
-    plan: starter    # Use 'free' for free tier (spins down)
+    region: frankfurt
+    plan: free
     healthCheckPath: /
-    envVars:
-      - key: NODE_ENV
-        value: production
     dockerCommand: /entrypoint.sh
